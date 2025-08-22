@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'pastel-pink': '#fce7f3',
+                        'pastel-blue': '#dbeafe',
+                        'pastel-purple': '#e9d5ff',
+                        'pastel-green': '#d1fae5',
+                        'pastel-yellow': '#fef3c7',
+                        'pastel-orange': '#fed7aa',
+                        'soft-pink': '#f9a8d4',
+                        'soft-blue': '#93c5fd',
+                        'soft-purple': '#c4b5fd',
+                        'soft-green': '#86efac',
+                        'soft-yellow': '#fde047',
+                        'soft-orange': '#fdba74'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-pastel-pink via-pastel-blue to-pastel-purple font-inter p-4 sm:p-6">
+    <div class="max-w-md mx-auto bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden">
+        <header class="bg-gradient-to-r from-soft-pink to-soft-purple text-white p-6 sm:p-8 text-center">
+            <h1 class="text-2xl sm:text-3xl font-bold mb-2 tracking-tight">✨ To-Do List</h1>
+            <p class="text-pink-100 text-sm sm:text-base opacity-90">오늘 할 일을 정리해보세요</p>
+        </header>
+
+        <main class="p-4 sm:p-6">
+            <form id="addTodoForm" class="mb-6">
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <input 
+                        type="text" 
+                        id="todoInput" 
+                        class="flex-1 px-4 py-3 sm:py-4 border-2 border-pastel-purple/30 rounded-2xl bg-white/70 backdrop-blur-sm placeholder-gray-400 focus:outline-none focus:border-soft-purple focus:ring-4 focus:ring-soft-purple/20 transition-all duration-200 text-gray-700" 
+                        placeholder="새로운 할 일을 입력하세요..."
+                        maxlength="100"
+                        required
+                    >
+                    <button 
+                        type="submit" 
+                        class="px-6 py-3 sm:py-4 bg-gradient-to-r from-soft-purple to-soft-pink text-white rounded-2xl font-medium hover:from-purple-400 hover:to-pink-400 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 whitespace-nowrap"
+                    >
+                        <span class="text-lg">+</span>
+                        <span class="hidden sm:inline">추가</span>
+                    </button>
+                </div>
+            </form>
+
+            <div class="grid grid-cols-3 gap-3 mb-6 p-4 bg-gradient-to-r from-pastel-blue/50 to-pastel-green/50 rounded-2xl backdrop-blur-sm">
+                <div class="text-center">
+                    <div class="text-xl sm:text-2xl font-bold text-blue-600 mb-1" id="totalCount">0</div>
+                    <div class="text-xs sm:text-sm text-blue-500 font-medium">전체</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-xl sm:text-2xl font-bold text-green-600 mb-1" id="completedCount">0</div>
+                    <div class="text-xs sm:text-sm text-green-500 font-medium">완료</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-xl sm:text-2xl font-bold text-purple-600 mb-1" id="remainingCount">0</div>
+                    <div class="text-xs sm:text-sm text-purple-500 font-medium">남은 할 일</div>
+                </div>
+            </div>
+
+            <div class="flex gap-2 mb-6">
+                <button class="filter-btn flex-1 py-2 px-3 rounded-xl text-sm font-medium transition-all duration-200 bg-soft-purple text-white shadow-md" data-filter="all">전체</button>
+                <button class="filter-btn flex-1 py-2 px-3 rounded-xl text-sm font-medium transition-all duration-200 bg-white/70 text-gray-600 hover:bg-pastel-purple/50" data-filter="active">진행중</button>
+                <button class="filter-btn flex-1 py-2 px-3 rounded-xl text-sm font-medium transition-all duration-200 bg-white/70 text-gray-600 hover:bg-pastel-purple/50" data-filter="completed">완료</button>
+            </div>
+
+            <div class="min-h-[200px] mb-6">
+                <ul id="todoList" class="space-y-3">
+                    <!-- 할 일 항목들이 동적으로 추가됩니다 -->
+                </ul>
+                
+                <div id="emptyState" class="text-center py-12">
+                    <div class="text-4xl sm:text-5xl mb-4 opacity-60">📝</div>
+                    <h3 class="text-lg sm:text-xl font-semibold text-gray-600 mb-2">할 일이 없습니다</h3>
+                    <p class="text-gray-500">새로운 할 일을 추가해보세요!</p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button 
+                    id="clearCompleted"
+                    class="px-6 py-2 text-sm font-medium text-red-500 border border-red-200 rounded-xl hover:bg-red-50 hover:border-red-300 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                    완료된 할 일 삭제
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

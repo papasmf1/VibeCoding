@@ -1,0 +1,146 @@
+/* 게임 기본 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+    color: white;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.game-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
+#gameCanvas {
+    border: 2px solid #00ffff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    background: #000;
+    display: block;
+    max-width: 100%;
+    max-height: 80vh;
+}
+
+.game-ui {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.score-display {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #00ffff;
+    display: inline-block;
+}
+
+.game-info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #00ffff;
+}
+
+#gameStatus {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.controls-info {
+    margin-top: 20px;
+    text-align: center;
+    color: #cccccc;
+    font-size: 14px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    #gameCanvas {
+        width: 95vw;
+        height: auto;
+        max-height: 70vh;
+    }
+    
+    .score-display {
+        font-size: 16px;
+        padding: 8px 12px;
+    }
+    
+    #gameStatus {
+        font-size: 20px;
+    }
+    
+    .controls-info {
+        font-size: 12px;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    #gameCanvas {
+        width: 98vw;
+        max-height: 65vh;
+    }
+    
+    .score-display {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+    
+    #gameStatus {
+        font-size: 18px;
+    }
+    
+    .game-info {
+        padding: 15px;
+    }
+}
+
+/* 게임 오버 애니메이션 */
+.game-over {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* 점수 증가 애니메이션 */
+.score-increase {
+    animation: scoreUp 0.3s ease-out;
+}
+
+@keyframes scoreUp {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); color: #ffff00; }
+    100% { transform: scale(1); }
+}

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5, CSS3, JavaScript 소개</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            color: #f0f0f0;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon {
+            font-size: 1.5em;
+        }
+
+        .html5 { color: #e34f26; }
+        .css3 { color: #1572b6; }
+        .javascript { color: #f7df1e; }
+
+        .feature-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            color: #4caf50;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .demo-area {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .demo-title {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .interactive-demo {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .demo-button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .demo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .color-box {
+            width: 100px;
+            height: 100px;
+            margin: 20px auto;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            transition: all 0.5s ease;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .semantic-example {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #ffc107;
+        }
+
+        .flexbox-demo {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .flex-item {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            flex: 1;
+            text-align: center;
+            border: 2px solid #2196f3;
+        }
+
+        @media (max-width: 768px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>웹 개발의 3대 기둥</h1>
+            <p class="subtitle">HTML5, CSS3, JavaScript로 만드는 현대적인 웹</p>
+            <div class="color-box" id="colorBox"></div>
+        </header>
+
+        <div class="sections">
+            <section class="section">
+                <h2><span class="icon html5">🏗️</span> HTML5</h2>
+                <p>웹 페이지의 구조와 콘텐츠를 정의하는 마크업 언어입니다. HTML5는 시맨틱 태그와 멀티미디어 지원을 통해 더욱 강력해졌습니다.</p>
+                
+                <ul class="feature-list">
+                    <li>시맨틱 태그 (header, nav, article, section, footer)</li>
+                    <li>멀티미디어 지원 (audio, video)</li>
+                    <li>Canvas를 통한 그래픽 처리</li>
+                    <li>웹 스토리지 (localStorage, sessionStorage)</li>
+                    <li>지오로케이션 API</li>
+                </ul>
+
+                <div class="demo-area">
+                    <div class="demo-title">HTML5 시맨틱 태그 예제</div>
+                    <div class="semantic-example">
+                        <article>
+                            <header>
+                                <h3>기사 제목</h3>
+                                <time datetime="2025-07-17">2025년 7월 17일</time>
+                            </header>
+                            <p>이것은 HTML5의 시맨틱 태그를 사용한 예제입니다.</p>
+                            <footer>작성자: 개발자</footer>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><span class="icon css3">🎨</span> CSS3</h2>
+                <p>웹 페이지의 스타일과 레이아웃을 담당하는 스타일시트 언어입니다. CSS3는 애니메이션, 그라디언트, 플렉스박스 등 강력한 기능을 제공합니다.</p>
+                
+                <ul class="feature-list">
+                    <li>플렉스박스와 그리드 레이아웃</li>
+                    <li>CSS 애니메이션과 트랜지션</li>
+                    <li>그라디언트와 그림자 효과</li>
+                    <li>반응형 디자인 (미디어 쿼리)</li>
+                    <li>CSS 변수와 계산 함수</li>
+                </ul>
+
+                <div class="demo-area">
+                    <div class="demo-title">CSS3 플렉스박스 예제</div>
+                    <div class="flexbox-demo">
+                        <div class="flex-item">Item 1</div>
+                        <div class="flex-item">Item 2</div>
+                        <div class="flex-item">Item 3</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><span class="icon javascript">⚡</span> JavaScript</h2>
+                <p>웹 페이지에 동적 기능과 상호작용을 추가하는 프로그래밍 언어입니다. ES6+의 현대적인 문법으로 더욱 강력해졌습니다.</p>
+                
+                <ul class="feature-list">
+                    <li>DOM 조작과 이벤트 처리</li>
+                    <li>비동기 프로그래밍 (Promise, async/await)</li>
+                    <li>모듈 시스템 (import/export)</li>
+                    <li>화살표 함수와 구조 분해</li>
+                    <li>클래스와 상속</li>
+                </ul>
+
+                <div class="demo-area">
+                    <div class="demo-title">JavaScript 인터랙티브 예제</div>
+                    <div id="jsDemo">
+                        <p>버튼을 클릭해서 JavaScript 기능을 체험해보세요!</p>
+                        <div id="counter">클릭 횟수: <span id="count">0</span></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="interactive-demo">
+            <h2>🚀 인터랙티브 데모</h2>
+            <p>버튼을 클릭해서 HTML5, CSS3, JavaScript가 함께 작동하는 모습을 확인해보세요!</p>
+            
+            <button class="demo-button" onclick="changeColor()">색상 변경</button>
+            <button class="demo-button" onclick="addAnimation()">애니메이션 추가</button>
+            <button class="demo-button" onclick="showAlert()">메시지 표시</button>
+            <button class="demo-button" onclick="incrementCounter()">카운터 증가</button>
+        </div>
+
+        <footer class="footer">
+            <p>© 2025 웹 개발 기초 학습 페이지</p>
+            <p>HTML5, CSS3, JavaScript를 활용한 현대적인 웹 개발을 경험해보세요!</p>
+        </footer>
+    </div>
+
+    <script>
+        // 전역 변수
+        let clickCount = 0;
+        let colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#f0932b', '#eb4d4b', '#6c5ce7'];
+        let currentColorIndex = 0;
+
+        // DOM이 로드된 후 실행
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('페이지가 로드되었습니다!');
+            updateCounter();
+        });
+
+        // 색상 변경 함수
+        function changeColor() {
+            const colorBox = document.getElementById('colorBox');
+            currentColorIndex = (currentColorIndex + 1) % colors.length;
+            const newColor = colors[currentColorIndex];
+            
+            colorBox.style.background = `linear-gradient(45deg, ${newColor}, ${colors[(currentColorIndex + 1) % colors.length]})`;
+            
+            // 부드러운 색상 전환 효과
+            colorBox.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                colorBox.style.transform = 'scale(1)';
+            }, 200);
+        }
+
+        // 애니메이션 추가 함수
+        function addAnimation() {
+            const colorBox = document.getElementById('colorBox');
+            
+            // 기존 애니메이션 클래스 제거
+            colorBox.style.animation = 'none';
+            
+            // 새로운 애니메이션 추가
+            setTimeout(() => {
+                colorBox.style.animation = 'pulse 0.5s ease-in-out 3';
+            }, 10);
+        }
+
+        // 알림 메시지 표시 함수
+        function showAlert() {
+            const messages = [
+                '🎉 HTML5로 구조를 만들었습니다!',
+                '🎨 CSS3로 아름답게 꾸몄습니다!',
+                '⚡ JavaScript로 동적 기능을 추가했습니다!',
+                '🚀 세 기술이 함께 작동합니다!',
+                '💡 웹 개발의 기초를 배우고 있습니다!'
+            ];
+            
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            
+            // 커스텀 알림 창 생성
+            const alertDiv = document.createElement('div');
+            alertDiv.innerHTML = randomMessage;
+            alertDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(45deg, #667eea, #764ba2);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                z-index: 1000;
+                font-size: 1.1em;
+                animation: slideIn 0.5s ease-out;
+            `;
+            
+            document.body.appendChild(alertDiv);
+            
+            // 3초 후 자동 제거
+            setTimeout(() => {
+                alertDiv.style.animation = 'slideOut 0.5s ease-in';
+                setTimeout(() => {
+                    document.body.removeChild(alertDiv);
+                }, 500);
+            }, 3000);
+        }
+
+        // 카운터 증가 함수
+        function incrementCounter() {
+            clickCount++;
+            updateCounter();
+            
+            // 특별한 숫자에서 축하 메시지
+            if (clickCount === 10) {
+                showAlert();
+            }
+        }
+
+        // 카운터 업데이트 함수
+        function updateCounter() {
+            const countElement = document.getElementById('count');
+            countElement.textContent = clickCount;
+            
+            // 숫자 변경 애니메이션
+            countElement.style.transform = 'scale(1.2)';
+            countElement.style.color = '#667eea';
+            
+            setTimeout(() => {
+                countElement.style.transform = 'scale(1)';
+                countElement.style.color = '#333';
+            }, 200);
+        }
+
+        // CSS 애니메이션 정의 (동적 추가)
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // 페이지 로드 시 환영 메시지
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                showAlert();
+            }, 1000);
+        });
+
+        // 키보드 이벤트 처리
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                changeColor();
+            } else if (event.key === ' ') {
+                event.preventDefault();
+                addAnimation();
+            }
+        });
+    </script>
+</body>
+</html>

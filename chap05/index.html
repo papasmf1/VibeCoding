@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제비우스 스타일 종스크롤 게임</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <div class="score">점수: <span id="score">0</span></div>
+            <div class="lives">생명: <span id="lives">3</span></div>
+            <div class="level">레벨: <span id="level">1</span></div>
+        </div>
+        
+        <canvas id="gameCanvas" width="800" height="600" tabindex="1"></canvas>
+        
+        <div class="game-controls">
+            <div class="instructions">
+                <h3>조작법:</h3>
+                <p>왼쪽/오른쪽 화살표 : 이동</p>
+                <p>스페이스바 : 발사</p>
+                <p>P : 일시정지</p>
+            </div>
+            
+            <div class="game-buttons">
+                <button id="startBtn">게임 시작</button>
+                <button id="pauseBtn">일시정지</button>
+                <button id="restartBtn">다시 시작</button>
+                <div class="sound-controls">
+                    <label>음악: <input type="range" id="musicVolume" min="0" max="100" value="30"></label>
+                    <label>효과음: <input type="range" id="sfxVolume" min="0" max="100" value="50"></label>
+                </div>
+            </div>
+        </div>
+        
+        <div id="gameOver" class="game-over hidden">
+            <h2>게임 오버!</h2>
+            <p>최종 점수: <span id="finalScore">0</span></p>
+            <button id="playAgainBtn">다시 플레이</button>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html> 

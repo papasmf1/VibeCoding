@@ -1,0 +1,41 @@
+# 프로젝트 구조 가이드
+
+이 워크스페이스는 다양한 웹 게임과 웹사이트 프로젝트들을 포함하고 있습니다.
+
+## 주요 프로젝트
+
+### 🎮 게임 프로젝트들
+- **메인 게임**: [index.html](mdc:index.html), [game.js](mdc:game.js), [style.css](mdc:style.css) - 제비우스 스타일 종스크롤 슈팅 게임
+- **Nintendo 게임**: [Nintendo/index.html](mdc:Nintendo/index.html), [Nintendo/game.js](mdc:Nintendo/game.js) - 마리오 스타일 플랫폼 게임
+- **테트리스 게임**: [테트리스게임.py](mdc:테트리스게임.py) - Python으로 구현된 테트리스
+
+### 🌟 웹사이트 프로젝트
+- **K-Drama 웹사이트**: [K-drama/index.html](mdc:K-drama/index.html), [K-drama/script.js](mdc:K-drama/script.js) - Tailwind CSS 기반 한국 드라마 웹사이트
+
+### 📊 데이터 분석 프로젝트
+- **KOSPI200 크롤러**: [kospi200_gui_crawler.py](mdc:kospi200_gui_crawler.py), [kospi200_final_crawler.py](mdc:kospi200_final_crawler.py) - 주식 데이터 수집
+- **타이타닉 분석**: [titanic_survival_analysis.py](mdc:titanic_survival_analysis.py) - 머신러닝 분석
+- **출생아수 분석**: [출생아수_분석.py](mdc:출생아수_분석.py) - 인구 통계 분석
+
+## 기술 스택별 가이드라인
+
+### HTML/CSS/JavaScript 프로젝트
+- HTML5 시맨틱 마크업 사용
+- CSS3 애니메이션과 반응형 디자인 적용
+- ES6+ JavaScript 문법 사용
+- 게임 프로젝트는 Canvas API 활용
+
+### Python 프로젝트
+- 데이터 분석: pandas, matplotlib, seaborn 사용
+- 웹 크롤링: requests, BeautifulSoup, selenium 활용
+- GUI: tkinter 또는 PyQt 사용
+- 머신러닝: scikit-learn, numpy 활용
+
+## 파일 명명 규칙
+- 한국어 파일명 허용 (데이터 분석 프로젝트)
+- 영문 파일명 권장 (웹 프로젝트)
+- 날짜와 시간이 포함된 데이터 파일명 사용
+description:
+globs:
+alwaysApply: true
+---

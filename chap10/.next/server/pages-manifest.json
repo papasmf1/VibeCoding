@@ -1,0 +1,13 @@
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/": "pages/index.js",
+  "/shop": "pages/shop.js",
+  "/auth": "pages/auth.js",
+  "/api/auth/signin": "pages/api/auth/signin.js",
+  "/api/cart": "pages/api/cart.js",
+  "/inquiry": "pages/inquiry.js",
+  "/api/categories": "pages/api/categories.js",
+  "/api/products": "pages/api/products.js"
+}

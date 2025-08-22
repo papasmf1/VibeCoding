@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="K-드라마 정보를 한눈에! 최신 한국 드라마의 줄거리, 출연진, 평점을 확인하세요.">
+    <meta name="keywords" content="K-드라마, 한국드라마, 드라마추천, 한류">
+    <meta name="author" content="K-Drama Hub">
+    
+    <!-- Open Graph 메타 태그 -->
+    <meta property="og:title" content="K-Drama Hub - 한국 드라마 정보 사이트">
+    <meta property="og:description" content="최신 K-드라마 정보와 리뷰를 확인하세요">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    
+    <title>K-Drama Hub - 한국 드라마 정보</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- 로고 -->
+                <div class="logo">
+                    <h1><a href="#" aria-label="K-Drama Hub 홈으로 이동">K-Drama Hub</a></h1>
+                </div>
+                
+                <!-- 네비게이션 -->
+                <nav class="nav" role="navigation">
+                    <ul class="nav-list">
+                        <li><a href="#home" class="nav-link active">홈</a></li>
+                        <li><a href="#genres" class="nav-link">장르</a></li>
+                        <li><a href="#popular" class="nav-link">인기작품</a></li>
+                    </ul>
+                </nav>
+                
+                <!-- 검색바 -->
+                <div class="search-container">
+                    <input 
+                        type="search" 
+                        id="searchInput" 
+                        class="search-input" 
+                        placeholder="드라마 제목, 배우 이름으로 검색..."
+                        aria-label="드라마 검색"
+                    >
+                    <button class="search-btn" aria-label="검색 실행">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- 모바일 메뉴 버튼 -->
+                <button class="mobile-menu-btn" aria-label="메뉴 열기" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="main">
+        <!-- 히어로 섹션 -->
+        <section class="hero" aria-label="추천 드라마">
+            <div class="container">
+                <div class="hero-content">
+                    <h2 class="hero-title">최고의 K-드라마를 만나보세요</h2>
+                    <p class="hero-description">감동적인 스토리와 뛰어난 연기로 전 세계를 매료시키는 한국 드라마들을 탐험해보세요.</p>
+                    <button class="hero-cta">더 많은 드라마 보기</button>
+                </div>
+                <div class="hero-slider">
+                    <!-- 슬라이더 콘텐츠는 JavaScript로 동적 생성 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 필터 및 드라마 목록 섹션 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="content-layout">
+                    <!-- 사이드바 필터 -->
+                    <aside class="sidebar" role="complementary">
+                        <div class="filter-section">
+                            <h3 class="filter-title">필터</h3>
+                            
+                            <!-- 장르 필터 -->
+                            <div class="filter-group">
+                                <h4 class="filter-group-title">장르</h4>
+                                <div class="genre-filters" id="genreFilters">
+                                    <!-- JavaScript로 동적 생성 -->
+                                </div>
+                            </div>
+                            
+                            <!-- 연도 필터 -->
+                            <div class="filter-group">
+                                <h4 class="filter-group-title">방영년도</h4>
+                                <div class="year-filter">
+                                    <input type="range" id="yearRange" min="2010" max="2024" value="2024" class="year-slider">
+                                    <div class="year-display">
+                                        <span id="yearValue">2024</span>년 이후
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 평점 필터 -->
+                            <div class="filter-group">
+                                <h4 class="filter-group-title">최소 평점</h4>
+                                <div class="rating-filter">
+                                    <input type="range" id="ratingRange" min="0" max="10" step="0.5" value="0" class="rating-slider">
+                                    <div class="rating-display">
+                                        <span id="ratingValue">0</span>점 이상
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 필터 초기화 -->
+                            <button class="filter-reset" id="resetFilters">필터 초기화</button>
+                        </div>
+                    </aside>
+
+                    <!-- 드라마 목록 -->
+                    <div class="main-content">
+                        <!-- 정렬 옵션 -->
+                        <div class="content-header">
+                            <div class="results-info">
+                                <span id="resultsCount">0</span>개의 드라마
+                            </div>
+                            <div class="sort-options">
+                                <label for="sortSelect" class="sr-only">정렬 기준</label>
+                                <select id="sortSelect" class="sort-select">
+                                    <option value="popularity">인기순</option>
+                                    <option value="rating">평점순</option>
+                                    <option value="year">최신순</option>
+                                    <option value="title">제목순</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- 드라마 그리드 -->
+                        <div class="drama-grid" id="dramaGrid" role="grid" aria-label="드라마 목록">
+                            <!-- JavaScript로 동적 생성 -->
+                        </div>
+
+                        <!-- 로딩 인디케이터 -->
+                        <div class="loading" id="loading" aria-hidden="true">
+                            <div class="loading-spinner"></div>
+                            <p>드라마를 불러오는 중...</p>
+                        </div>
+
+                        <!-- 검색 결과 없음 -->
+                        <div class="no-results" id="noResults" style="display: none;">
+                            <h3>검색 결과가 없습니다</h3>
+                            <p>다른 검색어나 필터를 시도해보세요.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 드라마 상세 모달 -->
+    <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+        <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
+            <button class="modal-close" id="modalClose" aria-label="모달 닫기">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-content" id="modalContent">
+                <!-- JavaScript로 동적 생성 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 K-Drama Hub. 모든 권리 보유.</p>
+                <p>한국 드라마의 모든 것을 한 곳에서</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
+</body>
+</html>

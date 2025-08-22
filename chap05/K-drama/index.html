@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-Drama World - 한국 드라마의 세계로 오세요</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'korean': ['Noto Sans KR', 'sans-serif'],
+                    },
+                    colors: {
+                        'pastel': {
+                            'pink': '#FFE5EC',
+                            'blue': '#E5F3FF',
+                            'purple': '#F0E5FF',
+                            'mint': '#E5FFF0',
+                            'peach': '#FFE5D9',
+                            'lavender': '#E5E5FF',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-korean bg-gradient-to-br from-pastel-pink to-pastel-purple min-h-screen">
+    <!-- 네비게이션 바 -->
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-tv text-2xl text-pink-400"></i>
+                    <span class="text-xl font-bold text-gray-800">K-Drama World</span>
+                </div>
+                
+                <!-- 데스크톱 메뉴 -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-pink-400 transition-colors duration-300">홈</a>
+                    <a href="popular.html" class="text-gray-700 hover:text-pink-400 transition-colors duration-300">인기 드라마</a>
+                    <a href="genres.html" class="text-gray-700 hover:text-pink-400 transition-colors duration-300">장르별</a>
+                    <a href="actors.html" class="text-gray-700 hover:text-pink-400 transition-colors duration-300">배우</a>
+                    <a href="news.html" class="text-gray-700 hover:text-pink-400 transition-colors duration-300">뉴스</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-pink-400 transition-colors duration-300">연락처</a>
+                    
+                    <!-- 로그인/회원가입 버튼 -->
+                    <div class="flex items-center space-x-4 ml-8">
+                        <a href="login.html" class="text-gray-700 hover:text-pink-400 transition-colors duration-300">로그인</a>
+                        <a href="signup.html" class="bg-gradient-to-r from-pink-400 to-purple-400 text-white px-4 py-2 rounded-full hover:from-pink-500 hover:to-purple-500 transition-all duration-300">회원가입</a>
+                    </div>
+                </div>
+                
+                <!-- 모바일 햄버거 메뉴 -->
+                <div class="md:hidden">
+                    <button class="hamburger text-gray-700 hover:text-pink-400">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- 모바일 메뉴 -->
+            <div class="mobile-menu hidden md:hidden bg-white/95 backdrop-blur-md rounded-lg mt-2 shadow-lg">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-pink-400 hover:bg-pastel-pink rounded-md">홈</a>
+                    <a href="popular.html" class="block px-3 py-2 text-gray-700 hover:text-pink-400 hover:bg-pastel-pink rounded-md">인기 드라마</a>
+                    <a href="genres.html" class="block px-3 py-2 text-gray-700 hover:text-pink-400 hover:bg-pastel-pink rounded-md">장르별</a>
+                    <a href="actors.html" class="block px-3 py-2 text-gray-700 hover:text-pink-400 hover:bg-pastel-pink rounded-md">배우</a>
+                    <a href="news.html" class="block px-3 py-2 text-gray-700 hover:text-pink-400 hover:bg-pastel-pink rounded-md">뉴스</a>
+                    <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:text-pink-400 hover:bg-pastel-pink rounded-md">연락처</a>
+                    <hr class="my-2 border-gray-200">
+                    <a href="login.html" class="block px-3 py-2 text-gray-700 hover:text-pink-400 hover:bg-pastel-pink rounded-md">로그인</a>
+                    <a href="signup.html" class="block px-3 py-2 bg-gradient-to-r from-pink-400 to-purple-400 text-white rounded-md hover:from-pink-500 hover:to-purple-500">회원가입</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 히어로 섹션 -->
+    <section id="home" class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <div class="text-center lg:text-left">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight">
+                    한국 드라마의 세계로 오세요
+                </h1>
+                <p class="text-lg sm:text-xl text-gray-600 mb-8 max-w-2xl">
+                    전 세계를 사로잡는 K-Drama의 매력을 경험해보세요
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <button class="btn-primary bg-gradient-to-r from-pink-400 to-purple-400 text-white px-8 py-3 rounded-full font-medium hover:from-pink-500 hover:to-purple-500 transform hover:scale-105 transition-all duration-300 shadow-lg">
+                        지금 시작하기
+                    </button>
+                    <button class="btn-secondary border-2 border-pink-400 text-pink-400 px-8 py-3 rounded-full font-medium hover:bg-pink-400 hover:text-white transform hover:scale-105 transition-all duration-300">
+                        트레일러 보기
+                    </button>
+                </div>
+            </div>
+            <div class="hidden lg:flex justify-center">
+                <div class="floating-card bg-white rounded-3xl p-6 shadow-2xl transform rotate-6 animate-bounce">
+                    <img src="https://via.placeholder.com/300x400/FFE5EC/FF69B4?text=K-Drama" alt="K-Drama" class="w-72 h-96 object-cover rounded-2xl">
+                    <div class="text-center mt-4">
+                        <h3 class="text-lg font-semibold text-gray-800">최신 인기 드라마</h3>
+                        <p class="text-gray-600">지금 가장 핫한 한국 드라마</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 인기 드라마 섹션 -->
+    <section id="popular" class="py-20 bg-gradient-to-br from-pastel-blue to-pastel-mint">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-12">인기 드라마</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="drama-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="relative overflow-hidden">
+                        <img src="https://via.placeholder.com/300x400/E5F3FF/4ECDC4?text=드라마1" alt="드라마1" class="w-full h-80 object-cover hover:scale-110 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            <button class="play-btn bg-pink-400 text-white w-16 h-16 rounded-full flex items-center justify-center hover:bg-pink-500 transform hover:scale-110 transition-all duration-300">
+                                <i class="fas fa-play text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">사랑의 불시착</h3>
+                        <p class="text-gray-600 mb-3">로맨스, 코미디</p>
+                        <div class="flex items-center text-pink-400">
+                            <i class="fas fa-star mr-1"></i>
+                            <span class="font-medium">9.2</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drama-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="relative overflow-hidden">
+                        <img src="https://via.placeholder.com/300x400/F0E5FF/45B7D1?text=드라마2" alt="드라마2" class="w-full h-80 object-cover hover:scale-110 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            <button class="play-btn bg-pink-400 text-white w-16 h-16 rounded-full flex items-center justify-center hover:bg-pink-500 transform hover:scale-110 transition-all duration-300">
+                                <i class="fas fa-play text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">기생충</h3>
+                        <p class="text-gray-600 mb-3">스릴러, 드라마</p>
+                        <div class="flex items-center text-pink-400">
+                            <i class="fas fa-star mr-1"></i>
+                            <span class="font-medium">8.9</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drama-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="relative overflow-hidden">
+                        <img src="https://via.placeholder.com/300x400/E5FFF0/96CEB4?text=드라마3" alt="드라마3" class="w-full h-80 object-cover hover:scale-110 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            <button class="play-btn bg-pink-400 text-white w-16 h-16 rounded-full flex items-center justify-center hover:bg-pink-500 transform hover:scale-110 transition-all duration-300">
+                                <i class="fas fa-play text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">오징어 게임</h3>
+                        <p class="text-gray-600 mb-3">스릴러, 서바이벌</p>
+                        <div class="flex items-center text-pink-400">
+                            <i class="fas fa-star mr-1"></i>
+                            <span class="font-medium">8.7</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drama-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="relative overflow-hidden">
+                        <img src="https://via.placeholder.com/300x400/FFE5D9/FFEAA7?text=드라마4" alt="드라마4" class="w-full h-80 object-cover hover:scale-110 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            <button class="play-btn bg-pink-400 text-white w-16 h-16 rounded-full flex items-center justify-center hover:bg-pink-500 transform hover:scale-110 transition-all duration-300">
+                                <i class="fas fa-play text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">이태원 클라쓰</h3>
+                        <p class="text-gray-600 mb-3">드라마, 비즈니스</p>
+                        <div class="flex items-center text-pink-400">
+                            <i class="fas fa-star mr-1"></i>
+                            <span class="font-medium">8.5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 장르별 섹션 -->
+    <section id="genres" class="py-20 bg-gradient-to-br from-pastel-peach to-pastel-lavender">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-12">장르별 탐색</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+                <div class="genre-card bg-gradient-to-br from-pink-400 to-purple-400 text-white rounded-2xl p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 cursor-pointer shadow-lg">
+                    <i class="fas fa-heart text-4xl mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-2">로맨스</h3>
+                    <p class="text-sm opacity-90">달콤한 사랑 이야기</p>
+                </div>
+                
+                <div class="genre-card bg-gradient-to-br from-red-400 to-pink-400 text-white rounded-2xl p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 cursor-pointer shadow-lg">
+                    <i class="fas fa-exclamation-triangle text-4xl mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-2">스릴러</h3>
+                    <p class="text-sm opacity-90">긴장감 넘치는 스토리</p>
+                </div>
+                
+                <div class="genre-card bg-gradient-to-br from-yellow-400 to-orange-400 text-white rounded-2xl p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 cursor-pointer shadow-lg">
+                    <i class="fas fa-laugh text-4xl mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-2">코미디</h3>
+                    <p class="text-sm opacity-90">웃음이 가득한 이야기</p>
+                </div>
+                
+                <div class="genre-card bg-gradient-to-br from-green-400 to-blue-400 text-white rounded-2xl p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 cursor-pointer shadow-lg">
+                    <i class="fas fa-graduation-cap text-4xl mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-2">학원</h3>
+                    <p class="text-sm opacity-90">청춘의 추억</p>
+                </div>
+                
+                <div class="genre-card bg-gradient-to-br from-blue-400 to-indigo-400 text-white rounded-2xl p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 cursor-pointer shadow-lg">
+                    <i class="fas fa-briefcase text-4xl mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-2">비즈니스</h3>
+                    <p class="text-sm opacity-90">직장인의 이야기</p>
+                </div>
+                
+                <div class="genre-card bg-gradient-to-br from-purple-400 to-pink-400 text-white rounded-2xl p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 cursor-pointer shadow-lg">
+                    <i class="fas fa-history text-4xl mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-2">사극</h3>
+                    <p class="text-sm opacity-90">역사 속 이야기</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 인기 배우 섹션 -->
+    <section id="actors" class="py-20 bg-gradient-to-br from-pastel-mint to-pastel-blue">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-12">인기 배우</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
+                <div class="actor-card bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+                    <img src="https://via.placeholder.com/150x150/FFE5EC/FF69B4?text=배우1" alt="배우1" class="w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover mx-auto mb-4">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">현빈</h3>
+                    <p class="text-sm text-gray-600">사랑의 불시착, 기생충</p>
+                </div>
+                
+                <div class="actor-card bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+                    <img src="https://via.placeholder.com/150x150/E5F3FF/4ECDC4?text=배우2" alt="배우2" class="w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover mx-auto mb-4">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">손예진</h3>
+                    <p class="text-sm text-gray-600">사랑의 불시착, 크래시</p>
+                </div>
+                
+                <div class="actor-card bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+                    <img src="https://via.placeholder.com/150x150/F0E5FF/45B7D1?text=배우3" alt="배우3" class="w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover mx-auto mb-4">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">이정재</h3>
+                    <p class="text-sm text-gray-600">오징어 게임, 기생충</p>
+                </div>
+                
+                <div class="actor-card bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+                    <img src="https://via.placeholder.com/150x150/E5FFF0/96CEB4?text=배우4" alt="배우4" class="w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover mx-auto mb-4">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">김태리</h3>
+                    <p class="text-sm text-gray-600">기생충, 미나리</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 뉴스 섹션 -->
+    <section id="news" class="py-20 bg-gradient-to-br from-pastel-lavender to-pastel-peach">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-12">K-Drama 뉴스</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <article class="news-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+                    <img src="https://via.placeholder.com/400x250/FFE5EC/FF69B4?text=뉴스1" alt="뉴스1" class="w-full h-48 sm:h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">새로운 K-Drama 시리즈 공개 예정</h3>
+                        <p class="text-gray-600 mb-4">2024년 가장 기대되는 한국 드라마들이 공개됩니다...</p>
+                        <span class="text-sm text-gray-500">2024.01.15</span>
+                    </div>
+                </article>
+                
+                <article class="news-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+                    <img src="https://via.placeholder.com/400x250/E5F3FF/4ECDC4?text=뉴스2" alt="뉴스2" class="w-full h-48 sm:h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">K-Drama 글로벌 인기 상승세</h3>
+                        <p class="text-gray-600 mb-4">전 세계에서 한국 드라마의 인기가 계속 상승하고 있습니다...</p>
+                        <span class="text-sm text-gray-500">2024.01.10</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 연락처 섹션 -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-pink-400 to-purple-400 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12">연락처</h2>
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left">
+                    <h3 class="text-2xl font-semibold mb-4">K-Drama World와 함께하세요</h3>
+                    <p class="text-lg mb-8 opacity-90">한국 드라마의 최신 소식과 정보를 받아보세요.</p>
+                    <div class="flex justify-center lg:justify-start space-x-4">
+                        <a href="#" class="social-link bg-white/20 w-12 h-12 rounded-full flex items-center justify-center hover:bg-white hover:text-pink-400 transform hover:-translate-y-1 transition-all duration-300">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="social-link bg-white/20 w-12 h-12 rounded-full flex items-center justify-center hover:bg-white hover:text-pink-400 transform hover:-translate-y-1 transition-all duration-300">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="social-link bg-white/20 w-12 h-12 rounded-full flex items-center justify-center hover:bg-white hover:text-pink-400 transform hover:-translate-y-1 transition-all duration-300">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="social-link bg-white/20 w-12 h-12 rounded-full flex items-center justify-center hover:bg-white hover:text-pink-400 transform hover:-translate-y-1 transition-all duration-300">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <form class="contact-form space-y-4">
+                    <input type="email" placeholder="이메일 주소" required class="w-full px-6 py-4 rounded-xl text-gray-800 focus:outline-none focus:ring-2 focus:ring-white/50">
+                    <button type="submit" class="w-full bg-white text-pink-400 px-6 py-4 rounded-xl font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300">
+                        구독하기
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold text-pink-400 mb-4">K-Drama World</h3>
+                    <p class="text-gray-300">한국 드라마의 세계로 여러분을 초대합니다.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-pink-400 mb-4">빠른 링크</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-300 hover:text-pink-400 transition-colors duration-300">홈</a></li>
+                        <li><a href="#popular" class="text-gray-300 hover:text-pink-400 transition-colors duration-300">인기 드라마</a></li>
+                        <li><a href="#genres" class="text-gray-300 hover:text-pink-400 transition-colors duration-300">장르별</a></li>
+                        <li><a href="#actors" class="text-gray-300 hover:text-pink-400 transition-colors duration-300">배우</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-pink-400 mb-4">지원</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-pink-400 transition-colors duration-300">고객 지원</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-pink-400 transition-colors duration-300">자주 묻는 질문</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-pink-400 transition-colors duration-300">문의하기</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center pt-8 border-t border-gray-700">
+                <p class="text-gray-400">&copy; 2024 K-Drama World. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

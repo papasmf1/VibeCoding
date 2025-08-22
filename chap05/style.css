@@ -1,0 +1,205 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.game-container {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+    border: 2px solid #00ffff;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+.score, .lives, .level {
+    background: rgba(0, 255, 255, 0.1);
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #00ffff;
+}
+
+#gameCanvas {
+    border: 3px solid #00ffff;
+    border-radius: 10px;
+    background: #000;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    margin-bottom: 20px;
+}
+
+.game-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.instructions {
+    text-align: left;
+    background: rgba(0, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #00ffff;
+}
+
+.instructions h3 {
+    color: #00ffff;
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px #00ffff;
+}
+
+.instructions p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.game-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sound-controls {
+    margin-top: 15px;
+    padding: 10px;
+    background: rgba(0, 255, 255, 0.1);
+    border-radius: 8px;
+    border: 1px solid #00ffff;
+}
+
+.sound-controls label {
+    display: block;
+    margin: 5px 0;
+    font-size: 14px;
+    color: #00ffff;
+}
+
+.sound-controls input[type="range"] {
+    width: 100%;
+    margin: 5px 0;
+    background: #333;
+    border-radius: 5px;
+    outline: none;
+}
+
+.sound-controls input[type="range"]::-webkit-slider-thumb {
+    background: #00ffff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.sound-controls input[type="range"]::-moz-range-thumb {
+    background: #00ffff;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+button {
+    background: linear-gradient(45deg, #00ffff, #0080ff);
+    color: #000;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+}
+
+button:hover {
+    background: linear-gradient(45deg, #00ccff, #0066cc);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 255, 255, 0.5);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.95);
+    padding: 40px;
+    border-radius: 15px;
+    border: 3px solid #ff0000;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.game-over h2 {
+    color: #ff0000;
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #ff0000;
+}
+
+.game-over p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* 애니메이션 효과 */
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); }
+    50% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.8); }
+}
+
+.game-container {
+    animation: glow 3s ease-in-out infinite;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 900px) {
+    .game-container {
+        padding: 15px;
+        margin: 10px;
+    }
+    
+    #gameCanvas {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+    }
+    
+    .game-controls {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .game-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+} 

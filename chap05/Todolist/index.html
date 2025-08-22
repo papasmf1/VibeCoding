@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오늘의 할일 ✨</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Noto Sans KR', 'sans-serif'],
+                    },
+                    colors: {
+                        'pastel': {
+                            50: '#fef7ff',
+                            100: '#fdeeff',
+                            200: '#fbdfff',
+                            300: '#f8c0ff',
+                            400: '#f491ff',
+                            500: '#ed5aff',
+                            600: '#d633ff',
+                            700: '#b800ff',
+                            800: '#9a00d6',
+                            900: '#7c00ad',
+                        },
+                        'soft': {
+                            pink: '#fce7f3',
+                            purple: '#f3e8ff',
+                            blue: '#dbeafe',
+                            green: '#dcfce7',
+                            yellow: '#fef3c7',
+                            orange: '#fed7aa',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-soft-pink via-soft-purple to-soft-blue font-sans text-gray-700">
+    <div class="max-w-4xl mx-auto p-6 min-h-screen flex flex-col">
+        <!-- 헤더 섹션 -->
+        <header class="bg-white/80 backdrop-blur-lg rounded-3xl p-8 mb-8 shadow-xl border border-white/20">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-700 mb-4 flex items-center justify-center gap-4">
+                    <i class="fas fa-sun text-4xl text-yellow-400 animate-pulse"></i>
+                    오늘의 할일
+                </h1>
+                <div class="flex justify-center gap-6 text-lg">
+                    <span class="font-medium text-gray-600" id="currentDate"></span>
+                    <span class="font-light text-gray-400" id="dayOfWeek"></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- 메인 콘텐츠 -->
+        <main class="flex-1 flex flex-col gap-8">
+            <!-- 할일 입력 섹션 -->
+            <section class="bg-white/80 backdrop-blur-lg rounded-3xl p-8 shadow-xl border border-white/20">
+                <div class="flex gap-4 items-center">
+                    <input type="text" id="todoInput" placeholder="오늘 할 일을 입력하세요..." 
+                           class="flex-1 px-6 py-4 text-lg border-2 border-gray-200 rounded-2xl bg-white/80 focus:border-pastel-400 focus:outline-none focus:ring-4 focus:ring-pastel-100 transition-all duration-300 placeholder-gray-400">
+                    <button id="addBtn" class="w-16 h-16 bg-gradient-to-r from-pastel-400 to-pastel-500 text-white text-2xl rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- 할일 목록 섹션 -->
+            <section class="bg-white/80 backdrop-blur-lg rounded-3xl p-8 shadow-xl border border-white/20 flex-1">
+                <div class="flex justify-between items-center mb-8 pb-6 border-b-2 border-gray-100">
+                    <h2 class="text-2xl font-semibold text-gray-700 flex items-center gap-3">
+                        <i class="fas fa-list-check text-pastel-500"></i>
+                        할일 목록
+                    </h2>
+                    <div class="flex gap-4 text-sm">
+                        <span class="px-4 py-2 bg-gray-100 rounded-xl font-medium text-gray-600">
+                            전체: <span id="totalCount" class="text-pastel-600">0</span>
+                        </span>
+                        <span class="px-4 py-2 bg-green-100 rounded-xl font-medium text-green-700">
+                            완료: <span id="completedCount" class="text-green-600">0</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="space-y-4" id="todoList">
+                    <!-- 할일 아이템들이 여기에 동적으로 추가됩니다 -->
+                </div>
+            </section>
+
+            <!-- 빈 상태 메시지 -->
+            <div class="hidden text-center py-16" id="emptyState">
+                <div class="text-6xl text-gray-300 mb-6">
+                    <i class="fas fa-clipboard-list"></i>
+                </div>
+                <h3 class="text-2xl font-semibold text-gray-600 mb-3">할일이 없습니다</h3>
+                <p class="text-gray-400">새로운 할일을 추가해보세요!</p>
+            </div>
+        </main>
+
+        <!-- 푸터 -->
+        <footer class="mt-8 text-center">
+            <div class="bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-white/20">
+                <p class="text-gray-600 flex items-center justify-center gap-2">
+                    <i class="fas fa-heart text-red-400 animate-pulse"></i>
+                    오늘도 좋은 하루 되세요!
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

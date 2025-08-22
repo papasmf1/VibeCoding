@@ -1,0 +1,23 @@
+<svg width="500" height="120" viewBox="0 0 500 120" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .heavy { font: bold 48px sans-serif; }
+        .light { font: 30px sans-serif; }
+    </style>
+    <defs>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:rgb(99, 102, 241);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgb(168, 85, 247);stop-opacity:1" />
+        </linearGradient>
+    </defs>
+    
+    <!-- Icon: Wavy line inside brackets -->
+    <g transform="translate(10, 10)">
+        <path d="M 25,15 L 5,50 L 25,85" stroke="#4A5568" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 75,15 L 95,50 L 75,85" stroke="#4A5568" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 30,50 Q 50,20 70,50" stroke="url(#grad1)" stroke-width="6" fill="none" stroke-linecap="round"/>
+    </g>
+
+    <!-- Text -->
+    <text x="120" y="75" fill="#2D3748" class="heavy">VIBE</text>
+    <text x="255" y="75" fill="#4A5568" class="light">CODING</text>
+</svg>

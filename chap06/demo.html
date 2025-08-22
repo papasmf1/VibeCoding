@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인터랙티브 물리 법칙 데모</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        h1 {
+            color: #1a237e;
+        }
+        #simulation-container {
+            width: 800px;
+            height: 500px;
+            border: 2px solid #333;
+            position: relative;
+            background-color: #ffffff;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        #ball {
+            width: 30px;
+            height: 30px;
+            background-color: #d32f2f;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+        }
+        .controls {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .controls button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #1976d2;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .controls button:hover {
+            background-color: #1565c0;
+        }
+        .controls input {
+            width: 80px;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .explanation {
+            margin-top: 20px;
+            width: 800px;
+            text-align: left;
+        }
+        .explanation h2 {
+            color: #004d40;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>물리 법칙 데모</h1>
+
+    <div id="simulation-container">
+        <div id="ball"></div>
+    </div>
+
+    <div class="controls">
+        <button id="reset-btn">초기화</button>
+        <button id="drop-btn">자유 낙하</button>
+        <div>
+            <label for="angle">각도 (°):</label>
+            <input type="number" id="angle" value="45" min="0" max="90">
+        </div>
+        <div>
+            <label for="velocity">속력 (m/s):</label>
+            <input type="number" id="velocity" value="100" min="10" max="200">
+        </div>
+        <button id="launch-btn">발사</button>
+    </div>
+
+    <div class="explanation">
+        <h2>데모 설명</h2>
+        <p>이 데모는 간단한 물리 엔진을 통해 두 가지 기본 원리를 보여줍니다.</p>
+        <ul>
+            <li><strong>자유 낙하:</strong> '자유 낙하' 버튼을 누르면 공이 중력의 영향으로 아래로 떨어집니다. 현실과 같이 공은 점점 더 빠르게 가속됩니다.</li>
+            <li><strong>포물선 운동:</strong> '각도'와 '속력'을 설정하고 '발사' 버튼을 누르면 공이 해당 조건으로 발사됩니다. 공은 수평 방향으로는 등속 운동을, 수직 방향으로는 중력의 영향을 받는 등가속도 운동을 하여 포물선 궤적을 그립니다.</li>
+        </ul>
+    </div>
+
+    <script>
+        const container = document.getElementById('simulation-container');
+        const ball = document.getElementById('ball');
+        const resetButton = document.getElementById('reset-btn');
+        const dropButton = document.getElementById('drop-btn');
+        const launchButton = document.getElementById('launch-btn');
+        const angleInput = document.getElementById('angle');
+        const velocityInput = document.getElementById('velocity');
+
+        // 시뮬레이션 상수 (화면 스케일에 맞게 조정)
+        const GRAVITY = 0.2; // 중력 가속도
+        const SCALE = 5; // m/s를 px/frame으로 변환하기 위한 스케일
+        const DAMPING = 0.8; // 바닥에 튕길 때 에너지 손실 계수
+
+        let posX, posY, velX, velY;
+        let animationFrameId;
+
+        function reset() {
+            cancelAnimationFrame(animationFrameId);
+            posX = 10;
+            posY = container.clientHeight - ball.clientHeight;
+            velX = 0;
+            velY = 0;
+            updateBallPosition();
+        }
+
+        function updateBallPosition() {
+            ball.style.left = `${posX}px`;
+            ball.style.top = `${posY}px`;
+        }
+
+        function animate() {
+            // 1. 물리 법칙 적용
+            velY += GRAVITY; // 중력 적용
+
+            // 2. 위치 업데이트
+            posX += velX;
+            posY += velY;
+
+            // 3. 충돌 감지 (바닥, 벽)
+            if (posY >= container.clientHeight - ball.clientHeight) {
+                posY = container.clientHeight - ball.clientHeight;
+                velY *= -DAMPING; // 튕기면서 속도 반전 및 감소
+                if (Math.abs(velY) < 1) velY = 0; // 매우 느리면 멈춤
+            }
+            if (posX >= container.clientWidth - ball.clientWidth || posX <= 0) {
+                velX *= -1; // 좌우 벽에 튕김
+                posX = Math.max(0, Math.min(posX, container.clientWidth - ball.clientWidth));
+            }
+
+            // 4. 화면 업데이트
+            updateBallPosition();
+
+            // 5. 다음 프레임 요청
+            animationFrameId = requestAnimationFrame(animate);
+        }
+
+        dropButton.addEventListener('click', () => {
+            reset();
+            posX = container.clientWidth / 2 - ball.clientWidth / 2;
+            posY = 10;
+            updateBallPosition();
+            animate();
+        });
+
+        launchButton.addEventListener('click', () => {
+            reset();
+            const angle = parseFloat(angleInput.value) * (Math.PI / 180); // 라디안으로 변환
+            const velocity = parseFloat(velocityInput.value) / SCALE;
+            
+            velX = velocity * Math.cos(angle);
+            velY = -velocity * Math.sin(angle); // Y축은 위쪽이 음수이므로 -1 곱함
+            
+            animate();
+        });
+
+        resetButton.addEventListener('click', reset);
+
+        // 초기 상태 설정
+        window.onload = reset;
+    </script>
+
+</body>
+</html>

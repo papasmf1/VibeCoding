@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인기 배우 - K-Drama World</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'korean': ['Noto Sans KR', 'sans-serif'],
+                    },
+                    colors: {
+                        'pastel': {
+                            'pink': '#FFE5EC',
+                            'blue': '#E5F3FF',
+                            'purple': '#F0E5FF',
+                            'mint': '#E5FFF0',
+                            'peach': '#FFE5D9',
+                            'lavender': '#E5E5FF',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-korean bg-gradient-to-br from-pastel-pink to-pastel-purple min-h-screen">
+    <!-- 네비게이션 바 -->
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-tv text-2xl text-pink-400"></i>
+                    <span class="text-xl font-bold text-gray-800">K-Drama World</span>
+                </div>
+                
+                <!-- 데스크톱 메뉴 -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-pink-400 transition-colors duration-300">홈</a>
+                    <a href="popular.html" class="text-gray-700 hover:text-pink-400 transition-colors duration-300">인기 드라마</a>
+                    <a href="genres.html" class="text-gray-700 hover:text-pink-400 transition-colors duration-300">장르별</a>
+                    <a href="actors.html" class="text-pink-400 font-semibold">배우</a>
+                    <a href="news.html" class="text-gray-700 hover:text-pink-400 transition-colors duration-300">뉴스</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-pink-400 transition-colors duration-300">연락처</a>
+                    
+                    <!-- 로그인/회원가입 버튼 -->
+                    <div class="flex items-center space-x-4 ml-8">
+                        <a href="login.html" class="text-gray-700 hover:text-pink-400 transition-colors duration-300">로그인</a>
+                        <a href="signup.html" class="bg-gradient-to-r from-pink-400 to-purple-400 text-white px-4 py-2 rounded-full hover:from-pink-500 hover:to-purple-500 transition-all duration-300">회원가입</a>
+                    </div>
+                </div>
+                
+                <!-- 모바일 햄버거 메뉴 -->
+                <div class="md:hidden">
+                    <button class="hamburger text-gray-700 hover:text-pink-400">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- 모바일 메뉴 -->
+            <div class="mobile-menu hidden md:hidden bg-white/95 backdrop-blur-md rounded-lg mt-2 shadow-lg">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-pink-400 hover:bg-pastel-pink rounded-md">홈</a>
+                    <a href="popular.html" class="block px-3 py-2 text-gray-700 hover:text-pink-400 hover:bg-pastel-pink rounded-md">인기 드라마</a>
+                    <a href="genres.html" class="block px-3 py-2 text-gray-700 hover:text-pink-400 hover:bg-pastel-pink rounded-md">장르별</a>
+                    <a href="actors.html" class="block px-3 py-2 text-pink-400 bg-pastel-pink rounded-md font-semibold">배우</a>
+                    <a href="news.html" class="block px-3 py-2 text-gray-700 hover:text-pink-400 hover:bg-pastel-pink rounded-md">뉴스</a>
+                    <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:text-pink-400 hover:bg-pastel-pink rounded-md">연락처</a>
+                    <hr class="my-2 border-gray-200">
+                    <a href="login.html" class="block px-3 py-2 text-gray-700 hover:text-pink-400 hover:bg-pastel-pink rounded-md">로그인</a>
+                    <a href="signup.html" class="block px-3 py-2 bg-gradient-to-r from-pink-400 to-purple-400 text-white rounded-md hover:from-pink-500 hover:to-purple-500">회원가입</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 페이지 헤더 -->
+    <section class="pt-20 pb-12 bg-gradient-to-br from-pastel-mint to-pastel-blue">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">인기 배우</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">한국 드라마를 빛내는 인기 배우들을 만나보세요. 각 배우의 프로필과 출연 작품을 확인할 수 있습니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 검색 및 필터 -->
+    <section class="py-8 bg-white/50 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+                <div class="relative w-full sm:w-96">
+                    <input type="text" placeholder="배우 이름을 검색하세요..." class="w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <select class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+                        <option>인기순</option>
+                        <option>이름순</option>
+                        <option>최신순</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 배우 그리드 -->
+    <section class="py-12 bg-gradient-to-br from-pastel-mint to-pastel-blue">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- 배우 카드 1 -->
+                <div class="actor-card bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="relative mb-6">
+                        <img src="https://via.placeholder.com/200x200/FFE5EC/FF69B4?text=현빈" alt="현빈" class="w-32 h-32 rounded-full object-cover mx-auto">
+                        <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-pink-400 text-white px-3 py-1 rounded-full text-sm font-semibold">#1</div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">현빈</h3>
+                    <p class="text-sm text-gray-600 mb-4">1982년 9월 25일</p>
+                    <div class="mb-4">
+                        <div class="flex items-center justify-center text-pink-400 mb-2">
+                            <i class="fas fa-star mr-1"></i>
+                            <span class="font-medium">9.5</span>
+                        </div>
+                        <p class="text-xs text-gray-500">평균 평점</p>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="text-sm font-semibold text-gray-800 mb-2">대표 작품</h4>
+                        <p class="text-xs text-gray-600">사랑의 불시착, 기생충, 알함브라 궁전의 추억</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="flex-1 bg-pink-400 text-white py-2 rounded-lg hover:bg-pink-500 transition-colors duration-300 text-sm">상세보기</button>
+                        <button class="bg-gray-200 text-gray-700 p-2 rounded-lg hover:bg-pink-400 hover:text-white transition-colors duration-300">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 배우 카드 2 -->
+                <div class="actor-card bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="relative mb-6">
+                        <img src="https://via.placeholder.com/200x200/E5F3FF/4ECDC4?text=손예진" alt="손예진" class="w-32 h-32 rounded-full object-cover mx-auto">
+                        <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-pink-400 text-white px-3 py-1 rounded-full text-sm font-semibold">#2</div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">손예진</h3>
+                    <p class="text-sm text-gray-600 mb-4">1981년 6월 22일</p>
+                    <div class="mb-4">
+                        <div class="flex items-center justify-center text-pink-400 mb-2">
+                            <i class="fas fa-star mr-1"></i>
+                            <span class="font-medium">9.3</span>
+                        </div>
+                        <p class="text-xs text-gray-500">평균 평점</p>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="text-sm font-semibold text-gray-800 mb-2">대표 작품</h4>
+                        <p class="text-xs text-gray-600">사랑의 불시착, 크래시, 비밀의 숲</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="flex-1 bg-pink-400 text-white py-2 rounded-lg hover:bg-pink-500 transition-colors duration-300 text-sm">상세보기</button>
+                        <button class="bg-gray-200 text-gray-700 p-2 rounded-lg hover:bg-pink-400 hover:text-white transition-colors duration-300">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 배우 카드 3 -->
+                <div class="actor-card bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="relative mb-6">
+                        <img src="https://via.placeholder.com/200x200/F0E5FF/45B7D1?text=이정재" alt="이정재" class="w-32 h-32 rounded-full object-cover mx-auto">
+                        <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-pink-400 text-white px-3 py-1 rounded-full text-sm font-semibold">#3</div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">이정재</h3>
+                    <p class="text-sm text-gray-600 mb-4">1971년 12월 15일</p>
+                    <div class="mb-4">
+                        <div class="flex items-center justify-center text-pink-400 mb-2">
+                            <i class="fas fa-star mr-1"></i>
+                            <span class="font-medium">9.1</span>
+                        </div>
+                        <p class="text-xs text-gray-500">평균 평점</p>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="text-sm font-semibold text-gray-800 mb-2">대표 작품</h4>
+                        <p class="text-xs text-gray-600">오징어 게임, 기생충, 신세계</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="flex-1 bg-pink-400 text-white py-2 rounded-lg hover:bg-pink-500 transition-colors duration-300 text-sm">상세보기</button>
+                        <button class="bg-gray-200 text-gray-700 p-2 rounded-lg hover:bg-pink-400 hover:text-white transition-colors duration-300">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 배우 카드 4 -->
+                <div class="actor-card bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="relative mb-6">
+                        <img src="https://via.placeholder.com/200x200/E5FFF0/96CEB4?text=김태리" alt="김태리" class="w-32 h-32 rounded-full object-cover mx-auto">
+                        <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-pink-400 text-white px-3 py-1 rounded-full text-sm font-semibold">#4</div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">김태리</h3>
+                    <p class="text-sm text-gray-600 mb-4">1990년 4월 24일</p>
+                    <div class="mb-4">
+                        <div class="flex items-center justify-center text-pink-400 mb-2">
+                            <i class="fas fa-star mr-1"></i>
+                            <span class="font-medium">8.9</span>
+                        </div>
+                        <p class="text-xs text-gray-500">평균 평점</p>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="text-sm font-semibold text-gray-800 mb-2">대표 작품</h4>
+                        <p class="text-xs text-gray-600">기생충, 미나리, 리틀 포레스트</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="flex-1 bg-pink-400 text-white py-2 rounded-lg hover:bg-pink-500 transition-colors duration-300 text-sm">상세보기</button>
+                        <button class="bg-gray-200 text-gray-700 p-2 rounded-lg hover:bg-pink-400 hover:text-white transition-colors duration-300">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 배우 카드 5 -->
+                <div class="actor-card bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="relative mb-6">
+                        <img src="https://via.placeholder.com/200x200/FFE5D9/FFEAA7?text=송중기" alt="송중기" class="w-32 h-32 rounded-full object-cover mx-auto">
+                        <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-pink-400 text-white px-3 py-1 rounded-full text-sm font-semibold">#5</div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">송중기</h3>
+                    <p class="text-sm text-gray-600 mb-4">1985년 9월 19일</p>
+                    <div class="mb-4">
+                        <div class="flex items-center justify-center text-pink-400 mb-2">
+                            <i class="fas fa-star mr-1"></i>
+                            <span class="font-medium">8.8</span>
+                        </div>
+                        <p class="text-xs text-gray-500">평균 평점</p>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="text-sm font-semibold text-gray-800 mb-2">대표 작품</h4>
+                        <p class="text-xs text-gray-600">태양의 후예, 빈센조, 아스달 연대기</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="flex-1 bg-pink-400 text-white py-2 rounded-lg hover:bg-pink-500 transition-colors duration-300 text-sm">상세보기</button>
+                        <button class="bg-gray-200 text-gray-700 p-2 rounded-lg hover:bg-pink-400 hover:text-white transition-colors duration-300">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 배우 카드 6 -->
+                <div class="actor-card bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="relative mb-6">
+                        <img src="https://via.placeholder.com/200x200/E5E5FF/9B59B6?text=김고은" alt="김고은" class="w-32 h-32 rounded-full object-cover mx-auto">
+                        <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-pink-400 text-white px-3 py-1 rounded-full text-sm font-semibold">#6</div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">김고은</h3>
+                    <p class="text-sm text-gray-600 mb-4">1991년 7월 2일</p>
+                    <div class="mb-4">
+                        <div class="flex items-center justify-center text-pink-400 mb-2">
+                            <i class="fas fa-star mr-1"></i>
+                            <span class="font-medium">8.7</span>
+                        </div>
+                        <p class="text-xs text-gray-500">평균 평점</p>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="text-sm font-semibold text-gray-800 mb-2">대표 작품</h4>
+                        <p class="text-xs text-gray-600">도깨비, 은밀하게 위대하게, 고백</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="flex-1 bg-pink-400 text-white py-2 rounded-lg hover:bg-pink-500 transition-colors duration-300 text-sm">상세보기</button>
+                        <button class="bg-gray-200 text-gray-700 p-2 rounded-lg hover:bg-pink-400 hover:text-white transition-colors duration-300">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 배우 카드 7 -->
+                <div class="actor-card bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="relative mb-6">
+                        <img src="https://via.placeholder.com/200x200/FFE5EC/FF69B4?text=박서준" alt="박서준" class="w-32 h-32 rounded-full object-cover mx-auto">
+                        <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-pink-400 text-white px-3 py-1 rounded-full text-sm font-semibold">#7</div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">박서준</h3>
+                    <p class="text-sm text-gray-600 mb-4">1988년 12월 16일</p>
+                    <div class="mb-4">
+                        <div class="flex items-center justify-center text-pink-400 mb-2">
+                            <i class="fas fa-star mr-1"></i>
+                            <span class="font-medium">8.6</span>
+                        </div>
+                        <p class="text-xs text-gray-500">평균 평점</p>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="text-sm font-semibold text-gray-800 mb-2">대표 작품</h4>
+                        <p class="text-xs text-gray-600">이태원 클라쓰, 기생충, 강남1970</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="flex-1 bg-pink-400 text-white py-2 rounded-lg hover:bg-pink-500 transition-colors duration-300 text-sm">상세보기</button>
+                        <button class="bg-gray-200 text-gray-700 p-2 rounded-lg hover:bg-pink-400 hover:text-white transition-colors duration-300">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 배우 카드 8 -->
+                <div class="actor-card bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="relative mb-6">
+                        <img src="https://via.placeholder.com/200x200/E5F3FF/4ECDC4?text=배두나" alt="배두나" class="w-32 h-32 rounded-full object-cover mx-auto">
+                        <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-pink-400 text-white px-3 py-1 rounded-full text-sm font-semibold">#8</div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">배두나</h3>
+                    <p class="text-sm text-gray-600 mb-4">1991년 10월 11일</p>
+                    <div class="mb-4">
+                        <div class="flex items-center justify-center text-pink-400 mb-2">
+                            <i class="fas fa-star mr-1"></i>
+                            <span class="font-medium">8.5</span>
+                        </div>
+                        <p class="text-xs text-gray-500">평균 평점</p>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="text-sm font-semibold text-gray-800 mb-2">대표 작품</h4>
+                        <p class="text-xs text-gray-600">기생충, 옥자, 옥자</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="flex-1 bg-pink-400 text-white py-2 rounded-lg hover:bg-pink-500 transition-colors duration-300 text-sm">상세보기</button>
+                        <button class="bg-gray-200 text-gray-700 p-2 rounded-lg hover:bg-pink-400 hover:text-white transition-colors duration-300">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 페이지네이션 -->
+            <div class="flex justify-center mt-12">
+                <nav class="flex items-center space-x-2">
+                    <button class="px-3 py-2 text-gray-500 hover:text-pink-400 transition-colors duration-300">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="px-3 py-2 bg-pink-400 text-white rounded-lg">1</button>
+                    <button class="px-3 py-2 text-gray-700 hover:text-pink-400 transition-colors duration-300">2</button>
+                    <button class="px-3 py-2 text-gray-700 hover:text-pink-400 transition-colors duration-300">3</button>
+                    <button class="px-3 py-2 text-gray-700 hover:text-pink-400 transition-colors duration-300">4</button>
+                    <button class="px-3 py-2 text-gray-700 hover:text-pink-400 transition-colors duration-300">5</button>
+                    <button class="px-3 py-2 text-gray-500 hover:text-pink-400 transition-colors duration-300">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold text-pink-400 mb-4">K-Drama World</h3>
+                    <p class="text-gray-300">한국 드라마의 세계로 여러분을 초대합니다.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-pink-400 mb-4">빠른 링크</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-pink-400 transition-colors duration-300">홈</a></li>
+                        <li><a href="popular.html" class="text-gray-300 hover:text-pink-400 transition-colors duration-300">인기 드라마</a></li>
+                        <li><a href="genres.html" class="text-gray-300 hover:text-pink-400 transition-colors duration-300">장르별</a></li>
+                        <li><a href="actors.html" class="text-pink-400">배우</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-pink-400 mb-4">지원</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-pink-400 transition-colors duration-300">고객 지원</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-pink-400 transition-colors duration-300">자주 묻는 질문</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-pink-400 transition-colors duration-300">문의하기</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center pt-8 border-t border-gray-700">
+                <p class="text-gray-400">&copy; 2024 K-Drama World. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

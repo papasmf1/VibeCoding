@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DemoGame - 종스크롤 슈팅게임</title>
+    <link rel="stylesheet" href="css/game.css">
+</head>
+
+<body>
+    <div class="game-container">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <div class="game-ui">
+            <div class="score-display">
+                <span>점수: <span id="score">0</span></span>
+            </div>
+            <div class="game-info">
+                <div id="gameStatus">게임을 시작하려면 스페이스바를 누르세요</div>
+            </div>
+        </div>
+        <div class="controls-info">
+            <p>조작법: 방향키로 이동, 스페이스바로 발사</p>
+        </div>
+    </div>
+
+    <!-- 게임 스크립트 로드 -->
+    <script src="js/utils/vector2d.js"></script>
+    <script src="js/utils/utils.js"></script>
+    <script src="js/managers/inputManager.js"></script>
+    <script src="js/managers/collisionManager.js"></script>
+    <script src="js/managers/uiManager.js"></script>
+    <script src="js/entities/entity.js"></script>
+    <script src="js/entities/player.js"></script>
+    <script src="js/entities/enemy.js"></script>
+    <script src="js/entities/bullet.js"></script>
+    <script src="js/entities/particle.js"></script>
+    <script src="js/entities/powerup.js"></script>
+    <script src="js/game.js"></script>
+    <script>
+        // 게임 초기화
+        window.addEventListener('load', () => {
+            const game = new Game('gameCanvas');
+            game.init();
+        });
+    </script>
+</body>
+
+</html>

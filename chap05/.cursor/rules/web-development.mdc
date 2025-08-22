@@ -1,0 +1,35 @@
+# 웹 개발 가이드라인
+
+## HTML 가이드라인
+- HTML5 시맨틱 태그 사용 (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`)
+- 접근성을 고려한 마크업 작성
+- 메타 태그와 SEO 최적화
+- 반응형 이미지 사용 (`srcset`, `sizes` 속성)
+
+## CSS 가이드라인
+- 모던 CSS 기능 활용 (Flexbox, Grid, CSS Variables)
+- 모바일 퍼스트 반응형 디자인
+- CSS 애니메이션과 전환 효과 사용
+- Tailwind CSS 클래스 네이밍 규칙 준수 (K-drama 프로젝트)
+
+## JavaScript 가이드라인
+- ES6+ 문법 사용 (arrow functions, destructuring, template literals)
+- 모듈 패턴과 클래스 기반 구조
+- 이벤트 위임과 성능 최적화
+- 게임 개발 시 requestAnimationFrame 사용
+
+## 게임 개발 특화 가이드라인
+- Canvas API를 활용한 렌더링
+- 게임 루프와 프레임 레이트 관리
+- 충돌 감지 알고리즘 구현
+- 사운드 효과와 시각적 피드백
+
+## 파일 구조
+- HTML: 메인 구조와 시맨틱 마크업
+- CSS: 스타일링과 레이아웃
+- JS: 로직과 인터랙션
+- 각 프로젝트별 독립적인 파일 구조 유지
+description:
+globs:
+alwaysApply: true
+---
